@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking System</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Movie Booking System</h1>
+        </header>
+
+        <div class="movie-list">
+            <div class="movie-card">
+                <h2>Singham</h2>
+                <p>An Action Movie</p>
+                <button>Book Now</button>
+            </div>
+            <div class="movie-card">
+                <h2>Raaz 2</h2>
+                <p>Romantic Horror</p>
+                <button>Book Now</button>
+            </div>
+            <div class="movie-card">
+                <h2>Golmaal</h2>
+                <p>A Comedy Movie</p>
+                <button>Book Now</button>
+            </div>
+        </div>
+
+        <div class="booking-form">
+            <h2>Booking Form</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="movie">Movie:</label>
+                <select id="movie" name="movie" required>
+                    <option value="">Select a movie</option>
+                    <option value="Movie 1">Singham</option>
+                    <option value="Movie 2">Raaz 2</option>
+                    <option value="Movie 3">Golmaal</option>
+                </select>
+
+                <button type="submit">Book Now</button>
+                <a href="SeatManagement.html"> Go To Seat Selection</a>
+                &nbsp
+                &nbsp
+            
+                <a href="AdminPanel.html"> Admin Panel</a>
+
+            </form>
+        </div>
+
+        <div class="success-message">
+            <p>Your booking has been successful!</p>
+        </div>
+
+
+
+        <footer class="footer">
+            <p>&copy; 2022 Movie Booking System. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

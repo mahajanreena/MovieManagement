@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Management System</title>
+    <style>
+        /* CSS styles for seat layout */
+        .seat {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            background-color: #ccc;
+            display: inline-block;
+        }
+        .seat.booked {
+            background-color: red;
+        }
+        .seat.locked {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Management System</h1>
+    
+    <h2>Seat Management</h2>
+    <div id="seatLayout">
+        <!-- Seat layout will be dynamically generated here -->
+    </div>
+    
+    <script>
+        // JavaScript code for seat management
+        var seats = []; // Array to store seat status
+        
+        // Function to generate seat layout
+        function generateSeatLayout() {
+            var seatLayout = document.getElementById("seatLayout");
+            seatLayout.innerHTML = ""; // Clear previous layout
+            
+            for (var i = 0; i < seats.length; i++) {
+                var seat = document.createElement("div");
+                seat.className = "seat";
+                
+                if (seats[i] === "booked") {
+                    seat.classList.add("booked");
+                } else if (seats[i] === "locked") {
+                    seat.classList.add("locked");
+                }
+                
+                seatLayout.appendChild(seat);
+            }
+        }
+        
+        // Function to book a seat
+        function bookSeat(seatIndex) {
+            if (seats[seatIndex] !== "locked") {
+                seats[seatIndex] = "booked";
+                generateSeatLayout();
+            }
+        }
+        
+        // Function to lock a seat
+        function lockSeat(seatIndex) {
+            seats[seatIndex] = "locked";
+            generateSeatLayout();
+        }
+        
+        // Function to release a seat
+        function releaseSeat(seatIndex) {
+            seats[seatIndex] = "";
+            generateSeatLayout();
+        }
+        
+        // Example usage
+        seats = ["", "", "", "", "", "", "", "", "", ""];
+        generateSeatLayout();
+        bookSeat(2);
+        lockSeat(5);
+        releaseSeat(2);
+    </script>
+
+    <!-- Additional code for seat booking form -->
+    <h2>Seat Booking</h2>
+    <form id="seatBookingForm">
+        <label for="seatIndex">Seat Index:</label>
+        <input type="number" id="seatIndex" name="seatIndex" min="0" max="9" required>
+        <button type="submit">Book Seat</button>
+    </form>
+
+    <script>
+        // Function to handle seat booking form submission
+        document.getElementById("seatBookingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var seatIndex = parseInt(document.getElementById("seatIndex").value);
+            bookSeat(seatIndex);
+        });
+    </script>
+
+    <!-- Additional code for seat locking form -->
+    <h2>Seat Locking</h2>
+    <form id="seatLockingForm">
+        <label for="seatIndex">Seat Index:</label>
+        <input type="number" id="seatIndex" name="seatIndex" min="0" max="9" required>
+        <button type="submit">Lock Seat</button>
+    </form>
+
+    <script>
+        // Function to handle seat locking form submission
+        document.getElementById("seatLockingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var seatIndex = parseInt(document.getElementById("seatIndex").value);
+            lockSeat(seatIndex);
+        });
+    </script>
+
+    <!-- Additional code for seat release form -->
+    <h2>Seat Release</h2>
+    <form id="seatReleaseForm">
+        <label for="seatIndex">Seat Index:</label>
+        <input type="number" id="seatIndex" name="seatIndex" min="0" max="9" required>
+        <button type="submit">Release Seat</button>
+    </form>
+
+    <script>
+        // Function to handle seat release form submission
+        document.getElementById("seatReleaseForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var seatIndex = parseInt(document.getElementById("seatIndex").value);
+            releaseSeat(seatIndex);
+        });
+    </script>
+</body>
+</html>
+<h2>Screen Configuration</h2>
+<form id="screenConfigForm">
+    <label for="screenSelection">Screen Selection:</label>
+    <select id="screenSelection" name="screenSelection">
+        <option value="screen1">Screen 1</option>
+        <option value="screen2">Screen 2</option>
+        <option value="screen3">Screen 3</option>
+    </select>
+    <br>
+    <label for="seatLimit">Seat Limit:</label>
+    <input type="number" id="seatLimit" name="seatLimit" min="1" required>
+    <br>
+    <button type="submit">Configure Screen</button>
+</form>
+
+<script>
+    // Function to handle screen configuration form submission
+    document.getElementById("screenConfigForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var screenSelection = document.getElementById("screenSelection").value;
+        var seatLimit = parseInt(document.getElementById("seatLimit").value);
+        configureScreen(screenSelection, seatLimit);
+    });
+
+    // Function to configure screen
+    function configureScreen(screenSelection, seatLimit) {
+        // Perform screen configuration logic here
+        console.log("Screen " + screenSelection + " configured with seat limit: " + seatLimit);
+    }
+</script>
+<h2>Admin Panel</h2>
+
+<!-- Screen Management -->
+<h3>Screen Management</h3>
+<form id="screenManagementForm">
+    <label for="screenName">Screen Name:</label>
+    <input type="text" id="screenName" name="screenName" required>
+    <button type="submit">Add Screen</button>
+</form>
+
+<script>
+    // Function to handle screen management form submission
+    document.getElementById("screenManagementForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var screenName = document.getElementById("screenName").value;
+        addScreen(screenName);
+    });
+
+    // Function to add a screen
+    function addScreen(screenName) {
+        // Perform screen management logic here
+        console.log("Screen added: " + screenName);
+    }
+</script>
+
+<!-- Booking Management -->
+<h3>Booking Management</h3>
+<form id="bookingManagementForm">
+    <label for="bookingName">Booking Name:</label>
+    <input type="text" id="bookingName" name="bookingName" required>
+    <button type="submit">Add Booking</button>
+</form>
+
+<script>
+    // Function to handle booking management form submission
+    document.getElementById("bookingManagementForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var bookingName = document.getElementById("bookingName").value;
+        addBooking(bookingName);
+    });
+
+    // Function to add a booking
+    function addBooking(bookingName) {
+        // Perform booking management logic here
+        console.log("Booking added: " + bookingName);
+    }
+</script>
+<!-- Admin Panel -->
+<h2>Admin Panel</h2>
+
+<!-- Screen Management -->
+<h3>Screen Management</h3>
+<form id="screenManagementForm">
+    <label for="screenName">Screen Name:</label>
+    <input type="text" id="screenName" name="screenName" required>
+    <button type="submit">Add Screen</button>
+</form>
+
+<script>
+    // Function to handle screen management form submission
+    document.getElementById("screenManagementForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var screenName = document.getElementById("screenName").value;
+        addScreen(screenName);
+    });
+
+    // Function to add a screen
+    function addScreen(screenName) {
+        // Perform screen management logic here
+        console.log("Screen added: " + screenName);
+    }
+</script>
+
+<!-- Booking Management -->
+<h3>Booking Management</h3>
+<form id="bookingManagementForm">
+    <label for="bookingName">Booking Name:</label>
+    <input type="text" id="bookingName" name="bookingName" required>
+    <button type="submit">Add Booking</button>
+</form>
+
+<script>
+    // Function to handle booking management form submission
+    document.getElementById("bookingManagementForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var bookingName = document.getElementById("bookingName").value;
+        addBooking(bookingName);
+    });
+
+    // Function to add a booking
+    function addBooking(bookingName) {
+        // Perform booking management logic here
+        console.log("Booking added: " + bookingName);
+    }
+</script>
